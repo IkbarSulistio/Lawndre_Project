@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:lawndre_project/app/modules/cuci_gorden/views/cuci_gorden_view.dart';
 import 'package:lawndre_project/app/modules/cuci_lipat/views/cuci_lipat_view.dart';
 import 'package:lawndre_project/app/modules/cuci_sepatu/views/cuci_sepatu_view.dart';
+import 'package:lawndre_project/app/modules/home_page/views/home_page_view.dart';
 import 'package:lawndre_project/app/modules/lipat_item/views/lipat_item_view.dart';
 import 'package:lawndre_project/app/modules/profile/views/profile_view.dart';
 
@@ -102,7 +103,7 @@ class LoginView extends StatelessWidget {
                 child: SizedBox(
                   width: screenWidth * 0.8,
                 child: ElevatedButton(
-                  onPressed: () => Get.offAll(CuciSepatuView()),
+                  onPressed: () => Get.offAll(HomePageView()),
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromRGBO(55, 94, 97, 1),
                     padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),

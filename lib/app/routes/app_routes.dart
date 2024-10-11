@@ -20,6 +20,14 @@ abstract class Routes {
   static const SETRIKA_ITEM = _Paths.SETRIKA_ITEM;
   static const CUCI_GORDEN = _Paths.CUCI_GORDEN;
   static const CUCI_SEPATU = _Paths.CUCI_SEPATU;
+  static const HOME_PAGE = _Paths.HOME_PAGE;
+  static const HISTORY = _Paths.HISTORY;
+  static const DETAIL = _Paths.DETAIL;
+  static const COUPON = _Paths.COUPON;
+  static const CUCI_RANSEL = _Paths.CUCI_RANSEL;
+  static const SELIMUT_CARPET = _Paths.SELIMUT_CARPET;
+  static const SELIMUT_CARPET_ITEM = _Paths.SELIMUT_CARPET_ITEM;
+  static const QN_A = _Paths.QN_A;
 }
 
 abstract class _Paths {
@@ -41,4 +49,12 @@ abstract class _Paths {
   static const SETRIKA_ITEM = '/setrika-item';
   static const CUCI_GORDEN = '/cuci-gorden';
   static const CUCI_SEPATU = '/cuci-sepatu';
+  static const HOME_PAGE = '/home-page';
+  static const HISTORY = '/history';
+  static const DETAIL = '/detail';
+  static const COUPON = '/coupon';
+  static const CUCI_RANSEL = '/cuci-ransel';
+  static const SELIMUT_CARPET = '/selimut-carpet';
+  static const SELIMUT_CARPET_ITEM = '/selimut-carpet-item';
+  static const QN_A = '/qn-a';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lawndre_project/app/modules/create_account/views/create_account_view.dart';
+import 'package:lawndre_project/app/modules/detail/views/detail_view.dart';
 import 'package:lawndre_project/app/modules/login/views/login_view.dart';
 import '../controllers/landing_controller.dart';
 
@@ -89,7 +90,7 @@ class LandingView extends StatelessWidget {
             child: SizedBox(
               width: screenWidth * 0.25,
             child: ElevatedButton(
-              onPressed: () => {}, // Add functionality later
+              onPressed: () => Get.to(DetailView()), // Add functionality later
               style: ElevatedButton.styleFrom(
                 primary: Color.fromRGBO(55, 94, 97, 1),
                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),

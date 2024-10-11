@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lawndre_project/app/modules/profile/views/bottom_nav_bar_view.dart';
 import '../controllers/nota_pemesanan_controller.dart';
 
 class NotaPemesananView extends StatelessWidget {
@@ -118,6 +119,7 @@ class NotaPemesananView extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBarView(),
     );
   }
 }
