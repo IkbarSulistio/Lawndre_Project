@@ -92,12 +92,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CUCI_SETRIKA,
-      page: () => const CuciSetrikaView(),
+      page: () => CuciSetrikaView(),
       binding: CuciSetrikaBinding(),
     ),
     GetPage(
       name: _Paths.CUSTOMER_SUPPORT,
-      page: () => const CustomerSupportView(),
+      page: () => CustomerSupportView(),
       binding: CustomerSupportBinding(),
     ),
   ];

@@ -8,7 +8,7 @@ class BottomNavBarView extends StatelessWidget {
   final BottomNavBarController bottomNavBarController = Get.put(BottomNavBarController());
 
   final List<Widget> pages= [
-    const ProfileView(),
+    ProfileView(),
   ];
 
   @override

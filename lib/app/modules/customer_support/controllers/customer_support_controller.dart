@@ -1,23 +1,25 @@
+// controllers/support_controller.dart
+
 import 'package:get/get.dart';
 
 class CustomerSupportController extends GetxController {
-  //TODO: Implement CustomerSupportController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void goToFAQ() {
+    Get.toNamed('/faq');
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void goToQnA() {
+    Get.toNamed('/qna');
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void goToEmailSupport() {
+    Get.toNamed('/email-support');
   }
 
-  void increment() => count.value++;
+  void goToCallCenter() {
+    Get.toNamed('/call-center');
+  }
+
+  void goToFeedback() {
+    Get.toNamed('/feedback-rating');
+  }
 }
