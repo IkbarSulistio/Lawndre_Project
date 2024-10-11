@@ -1,0 +1,37 @@
+name: lawndre_project
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  font_awesome_flutter: ^10.0.0
+  image_picker: ^0.8.7+3
+  geolocator: 11.1.0
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  assets:
+    - assets/images/Castiron1.png
+    - assets/images/google.png
+    - assets/images/cuci_gorden.png
+    - assets/images/cuci_lipat.png
+    - assets/images/cuci_ransel.png
+    - assets/images/cuci_setrika.png
+    - assets/images/selimut_carpet.png
+    - assets/images/cuci_sepatu.png
+    - assets/images/jaket.png
+    - assets/images/kaos.png
+    - assets/images/kemeja.png
+    - assets/images/celana.png
+  uses-material-design: true
+
