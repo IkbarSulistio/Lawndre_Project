@@ -2,8 +2,12 @@ import 'package:get/get.dart';
 
 import '../modules/create_account/bindings/create_account_binding.dart';
 import '../modules/create_account/views/create_account_view.dart';
+import '../modules/cuci_gorden/bindings/cuci_gorden_binding.dart';
+import '../modules/cuci_gorden/views/cuci_gorden_view.dart';
 import '../modules/cuci_lipat/bindings/cuci_lipat_binding.dart';
 import '../modules/cuci_lipat/views/cuci_lipat_view.dart';
+import '../modules/cuci_sepatu/bindings/cuci_sepatu_binding.dart';
+import '../modules/cuci_sepatu/views/cuci_sepatu_view.dart';
 import '../modules/cuci_setrika/bindings/cuci_setrika_binding.dart';
 import '../modules/cuci_setrika/views/cuci_setrika_view.dart';
 import '../modules/customer_support/bindings/customer_support_binding.dart';
@@ -113,6 +117,16 @@ class AppPages {
       name: _Paths.SETRIKA_ITEM,
       page: () => SetrikaItemView(),
       binding: SetrikaItemBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUCI_GORDEN,
+      page: () => CuciGordenView(),
+      binding: CuciGordenBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUCI_SEPATU,
+      page: () => CuciSepatuView(),
+      binding: CuciSepatuBinding(),
     ),
   ];
 }
