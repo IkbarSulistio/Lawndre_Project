@@ -1,23 +1,48 @@
+// edit_profile_controller.dart
+import 'dart:io';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import '../controllers/model/profile_model.dart';
 
 class EditProfileController extends GetxController {
-  //TODO: Implement EditProfileController
+  var profile = ProfileModel(
+    userName: 'User Name',
+    email: 'user@example.com',
+    phoneNumber: '+1234567890',
+  ).obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  final ImagePicker _picker = ImagePicker();
+
+  void updateProfileImage() async {
+    try {
+      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        profile.update((val) {
+          val!.profileImage = pickedFile.path;
+        });
+      } else {
+        print('No image selected.');
+      }
+    } catch (e) {
+      print('Error picking image: $e');
+    }
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void updateUserName(String name) {
+    profile.update((val) {
+      val!.userName = name;
+    });
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void updateEmail(String email) {
+    profile.update((val) {
+      val!.email = email;
+    });
   }
 
-  void increment() => count.value++;
+  void updatePhoneNumber(String phone) {
+    profile.update((val) {
+      val!.phoneNumber = phone;
+    });
+  }
 }

@@ -14,6 +14,8 @@ abstract class Routes {
   static const PAYMENT = _Paths.PAYMENT;
   static const PICKUP_ORDER = _Paths.PICKUP_ORDER;
   static const NOTA_PEMESANAN = _Paths.NOTA_PEMESANAN;
+  static const CUCI_SETRIKA = _Paths.CUCI_SETRIKA;
+  static const CUSTOMER_SUPPORT = _Paths.CUSTOMER_SUPPORT;
 }
 
 abstract class _Paths {
@@ -29,4 +31,6 @@ abstract class _Paths {
   static const PAYMENT = '/payment';
   static const PICKUP_ORDER = '/pickup-order';
   static const NOTA_PEMESANAN = '/nota-pemesanan';
+  static const CUCI_SETRIKA = '/cuci-setrika';
+  static const CUSTOMER_SUPPORT = '/customer-support';
 }

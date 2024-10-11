@@ -4,6 +4,10 @@ import '../modules/create_account/bindings/create_account_binding.dart';
 import '../modules/create_account/views/create_account_view.dart';
 import '../modules/cuci_lipat/bindings/cuci_lipat_binding.dart';
 import '../modules/cuci_lipat/views/cuci_lipat_view.dart';
+import '../modules/cuci_setrika/bindings/cuci_setrika_binding.dart';
+import '../modules/cuci_setrika/views/cuci_setrika_view.dart';
+import '../modules/customer_support/bindings/customer_support_binding.dart';
+import '../modules/customer_support/views/customer_support_view.dart';
 import '../modules/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/edit_profile/views/edit_profile_view.dart';
 import '../modules/landing/bindings/landing_binding.dart';
@@ -85,6 +89,16 @@ class AppPages {
       name: _Paths.NOTA_PEMESANAN,
       page: () => NotaPemesananView(),
       binding: NotaPemesananBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUCI_SETRIKA,
+      page: () => const CuciSetrikaView(),
+      binding: CuciSetrikaBinding(),
+    ),
+    GetPage(
+      name: _Paths.CUSTOMER_SUPPORT,
+      page: () => const CustomerSupportView(),
+      binding: CustomerSupportBinding(),
     ),
   ];
 }
