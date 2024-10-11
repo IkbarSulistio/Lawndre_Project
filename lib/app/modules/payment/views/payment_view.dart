@@ -58,7 +58,7 @@ class PaymentView extends StatelessWidget {
       icon: Icon(icon, color: Colors.white),
       label: Text(title, style: TextStyle(fontSize: 18, color: Colors.white)),
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
         backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -73,8 +73,8 @@ class PaymentView extends StatelessWidget {
       onPressed: () => Get.to(PickupOrderView()),
       child: Text('Confirm', style: TextStyle(color: Colors.white)),
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-        backgroundColor: Colors.green,
+        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+        backgroundColor: Color.fromRGBO(55, 94, 97, 1),
       ),
     );
   }

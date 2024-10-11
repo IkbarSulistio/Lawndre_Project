@@ -18,11 +18,12 @@ class PickupOrderView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('(~ 7km) Pick Up Now', style: TextStyle(fontSize: 18)),
+            Text('(~ 7km) Pick Up Now', style: TextStyle(fontSize: 18),),
+            
             SizedBox(height: 20),
             Row(
               children: [
-                Icon(Icons.location_on_outlined, color: Colors.green),
+                Icon(Icons.location_on_outlined, color: Color.fromRGBO(49, 90, 57, 1)),
                 SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,12 +37,12 @@ class PickupOrderView extends StatelessWidget {
             SizedBox(height: 20),
             Row(
               children: [
-                Icon(Icons.location_on, color: Colors.green),
+                Icon(Icons.location_on, color: Color.fromRGBO(49, 90, 57, 1)),
                 SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Selected Location', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text('Selected Location', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                     Obx(() => Text(controller.selectedAddress.value, style: TextStyle(color: Colors.grey))),
                   ],
                 ),
@@ -52,10 +53,10 @@ class PickupOrderView extends StatelessWidget {
               onPressed: () {
                 Get.to(() => MapWidget()); // Navigate to map page
               },
-              child: Text('Select Location on Map'),
+              child: Text('Select Location on Map', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                backgroundColor: Color.fromRGBO(55, 94, 97, 1),
               ),
             ),
             SizedBox(height: 20),
@@ -68,8 +69,8 @@ class PickupOrderView extends StatelessWidget {
               },
               child: Text('PICKUP NOW', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 145),
+                backgroundColor: Color.fromRGBO(55, 94, 97, 1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
