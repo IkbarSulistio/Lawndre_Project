@@ -13,6 +13,7 @@ abstract class Routes {
   static const SCHEDULE_PICKUP = _Paths.SCHEDULE_PICKUP;
   static const PAYMENT = _Paths.PAYMENT;
   static const PICKUP_ORDER = _Paths.PICKUP_ORDER;
+  static const NOTA_PEMESANAN = _Paths.NOTA_PEMESANAN;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const SCHEDULE_PICKUP = '/schedule-pickup';
   static const PAYMENT = '/payment';
   static const PICKUP_ORDER = '/pickup-order';
+  static const NOTA_PEMESANAN = '/nota-pemesanan';
 }

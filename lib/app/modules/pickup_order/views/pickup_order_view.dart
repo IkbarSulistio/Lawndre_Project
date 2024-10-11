@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lawndre_project/app/modules/nota_pemesanan/views/nota_pemesanan_view.dart';
 import '../controllers/pickup_order_controller.dart';
 import '../widgets/map_widget.dart';
 
@@ -112,9 +113,7 @@ class PickupOrderView extends StatelessWidget {
 
             // Tombol Pickup Now
             ElevatedButton(
-              onPressed: () {
-                // Logic for pickup action
-              },
+              onPressed: () => Get.to(NotaPemesananView()),
               child: Text('PICKUP NOW', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 145),

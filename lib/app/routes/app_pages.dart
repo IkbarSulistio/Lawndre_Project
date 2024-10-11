@@ -12,6 +12,8 @@ import '../modules/lipat_item/bindings/lipat_item_binding.dart';
 import '../modules/lipat_item/views/lipat_item_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/nota_pemesanan/bindings/nota_pemesanan_binding.dart';
+import '../modules/nota_pemesanan/views/nota_pemesanan_view.dart';
 import '../modules/payment/bindings/payment_binding.dart';
 import '../modules/payment/views/payment_view.dart';
 import '../modules/pickup_order/bindings/pickup_order_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.PICKUP_ORDER,
       page: () => PickupOrderView(),
       binding: PickupOrderBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTA_PEMESANAN,
+      page: () => NotaPemesananView(),
+      binding: NotaPemesananBinding(),
     ),
   ];
 }
