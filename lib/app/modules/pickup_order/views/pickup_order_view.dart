@@ -1,4 +1,3 @@
-// pickup_order_view.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/pickup_order_controller.dart';
@@ -36,7 +35,7 @@ class PickupOrderView extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            // Lokasi dari Handphone
+            // Lokasi berdasarkan perangkat
             Row(
               children: [
                 Icon(Icons.location_on, color: Colors.green),
@@ -45,7 +44,7 @@ class PickupOrderView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Tegalgondo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    Obx(() => Text(controller.currentLocation.value, style: TextStyle(color: Colors.grey))),
+                    Obx(() => Text(controller.deviceInfo.value, style: TextStyle(color: Colors.grey))),
                   ],
                 ),
               ],

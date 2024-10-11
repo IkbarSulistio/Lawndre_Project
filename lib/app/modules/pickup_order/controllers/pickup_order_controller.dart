@@ -1,56 +1,23 @@
-// pickup_order_controller.dart
 import 'package:get/get.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class PickupOrderController extends GetxController {
-  var currentLocation = ''.obs;  // Observable string for the current location
-  var weight = 9.6.obs;  // Example weight value
-  var price = 89000.obs; // Example price value
+  var deviceInfo = ''.obs;  // Observable for storing device information
+  var weight = 9.6.obs;     // Example weight value
+  var price = 89000.obs;    // Example price value
 
   @override
   void onInit() {
     super.onInit();
-    getCurrentLocation();  // Call this method when the controller is initialized
+    getDeviceInfo();  // Call this method when the controller is initialized
   }
 
-  // Method to get the current location
-  Future<void> getCurrentLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
+  // Method to get device information
+  Future<void> getDeviceInfo() async {
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
 
-    // Check if location services are enabled
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      return Future.error('Location services are disabled.');
-    }
-
-    // Check for location permissions
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied.');
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
-    }
-
-    // Get the current position
-    Position position = await Geolocator.getCurrentPosition();
-    updateLocation(position);
-  }
-
-  // Update location from the position
-  Future<void> updateLocation(Position position) async {
-    try {
-      // Set location in the controller's observable
-      currentLocation.value =
-          "Jln. ${position.latitude}, ${position.longitude}";
-    } catch (e) {
-      currentLocation.value = "Error getting location";
-    }
+    // You can extract information like model, version, and more
+    deviceInfo.value = "${androidInfo.brand} ${androidInfo.model}";
   }
 }
