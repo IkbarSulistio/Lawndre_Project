@@ -1,23 +1,25 @@
 import 'package:get/get.dart';
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geocoding/geocoding.dart';
 
 class PickupOrderController extends GetxController {
-  var deviceInfo = ''.obs;  // Observable for storing device information
-  var weight = 9.6.obs;     // Example weight value
-  var price = 89000.obs;    // Example price value
+  var selectedAddress = ''.obs;
+  var selectedLatLng = LatLng(-7.978469, 112.561741).obs; // Default location (UMM)
 
-  @override
-  void onInit() {
-    super.onInit();
-    getDeviceInfo();  // Call this method when the controller is initialized
+  // Function to get the address from LatLng
+  Future<void> getAddressFromLatLng(LatLng position) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+      Placemark place = placemarks[0];
+      selectedAddress.value = "${place.street}, ${place.locality}, ${place.country}";
+    } catch (e) {
+      selectedAddress.value = "No address available";
+    }
   }
 
-  // Method to get device information
-  Future<void> getDeviceInfo() async {
-    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-    AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
-
-    // You can extract information like model, version, and more
-    deviceInfo.value = "${androidInfo.brand} ${androidInfo.model}";
+  // Function called when user selects location on map
+  void selectLocation(LatLng position) {
+    selectedLatLng.value = position;
+    getAddressFromLatLng(position);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/pickup_order_controller.dart';
+import '../widgets/map_widget.dart';
 
 class PickupOrderView extends StatelessWidget {
   @override
@@ -17,10 +18,8 @@ class PickupOrderView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Jarak dan status pick up
             Text('(~ 7km) Pick Up Now', style: TextStyle(fontSize: 18)),
             SizedBox(height: 20),
-            // Lokasi Sengkaling
             Row(
               children: [
                 Icon(Icons.location_on_outlined, color: Colors.green),
@@ -35,7 +34,6 @@ class PickupOrderView extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            // Lokasi berdasarkan perangkat
             Row(
               children: [
                 Icon(Icons.location_on, color: Colors.green),
@@ -43,37 +41,37 @@ class PickupOrderView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Tegalgondo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    Obx(() => Text(controller.deviceInfo.value, style: TextStyle(color: Colors.grey))),
+                    Text('Selected Location', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Obx(() => Text(controller.selectedAddress.value, style: TextStyle(color: Colors.grey))),
                   ],
                 ),
               ],
             ),
             SizedBox(height: 20),
-            Divider(thickness: 2, color: Colors.green),
-            SizedBox(height: 10),
-            // Berat item
-            Obx(() => Text('${controller.weight.value} kg', style: TextStyle(fontSize: 16))),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => MapWidget()); // Navigate to map page
+              },
+              child: Text('Select Location on Map'),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                backgroundColor: Colors.green,
+              ),
+            ),
             SizedBox(height: 20),
             Divider(thickness: 2, color: Colors.green),
-            SizedBox(height: 10),
-            // Harga yang harus dibayar
-            Obx(() => Text('Payable by Customer Rp${controller.price.value}', style: TextStyle(fontSize: 16))),
+            Obx(() => Text('${controller.selectedLatLng.value.latitude}, ${controller.selectedLatLng.value.longitude}', style: TextStyle(fontSize: 16))),
             Spacer(),
-            // Tombol Pickup Now
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Logic untuk proses pickup
-                },
-                child: Text('PICKUP NOW', style: TextStyle(color: Colors.white)),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+            ElevatedButton(
+              onPressed: () {
+                // Process pickup logic
+              },
+              child: Text('PICKUP NOW', style: TextStyle(color: Colors.white)),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
