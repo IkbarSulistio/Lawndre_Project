@@ -16,6 +16,8 @@ abstract class Routes {
   static const NOTA_PEMESANAN = _Paths.NOTA_PEMESANAN;
   static const CUCI_SETRIKA = _Paths.CUCI_SETRIKA;
   static const CUSTOMER_SUPPORT = _Paths.CUSTOMER_SUPPORT;
+  static const FEEDBACK_RATING = _Paths.FEEDBACK_RATING;
+  static const SETRIKA_ITEM = _Paths.SETRIKA_ITEM;
 }
 
 abstract class _Paths {
@@ -33,4 +35,6 @@ abstract class _Paths {
   static const NOTA_PEMESANAN = '/nota-pemesanan';
   static const CUCI_SETRIKA = '/cuci-setrika';
   static const CUSTOMER_SUPPORT = '/customer-support';
+  static const FEEDBACK_RATING = '/feedback-rating';
+  static const SETRIKA_ITEM = '/setrika-item';
 }

@@ -1,6 +1,7 @@
 // controllers/support_controller.dart
 
 import 'package:get/get.dart';
+import 'package:lawndre_project/app/modules/feedback_rating/views/feedback_rating_view.dart';
 
 class CustomerSupportController extends GetxController {
   void goToFAQ() {
@@ -20,6 +21,6 @@ class CustomerSupportController extends GetxController {
   }
 
   void goToFeedback() {
-    Get.toNamed('/feedback-rating');
+    Get.to(FeedbackRatingView());
   }
 }

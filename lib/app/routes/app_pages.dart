@@ -10,6 +10,8 @@ import '../modules/customer_support/bindings/customer_support_binding.dart';
 import '../modules/customer_support/views/customer_support_view.dart';
 import '../modules/edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/edit_profile/views/edit_profile_view.dart';
+import '../modules/feedback_rating/bindings/feedback_rating_binding.dart';
+import '../modules/feedback_rating/views/feedback_rating_view.dart';
 import '../modules/landing/bindings/landing_binding.dart';
 import '../modules/landing/views/landing_view.dart';
 import '../modules/lipat_item/bindings/lipat_item_binding.dart';
@@ -26,6 +28,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/schedule_pickup/bindings/schedule_pickup_binding.dart';
 import '../modules/schedule_pickup/views/schedule_pickup_view.dart';
+import '../modules/setrika_item/bindings/setrika_item_binding.dart';
+import '../modules/setrika_item/views/setrika_item_view.dart';
 
 part 'app_routes.dart';
 
@@ -99,6 +103,16 @@ class AppPages {
       name: _Paths.CUSTOMER_SUPPORT,
       page: () => CustomerSupportView(),
       binding: CustomerSupportBinding(),
+    ),
+    GetPage(
+      name: _Paths.FEEDBACK_RATING,
+      page: () => FeedbackRatingView(),
+      binding: FeedbackRatingBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETRIKA_ITEM,
+      page: () => SetrikaItemView(),
+      binding: SetrikaItemBinding(),
     ),
   ];
 }

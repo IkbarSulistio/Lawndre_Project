@@ -100,7 +100,7 @@ class LoginView extends StatelessWidget {
                 child: SizedBox(
                   width: screenWidth * 0.8,
                 child: ElevatedButton(
-                  onPressed: () => Get.offAll(ProfileView()),
+                  onPressed: () => Get.offAll(LipatItemView()),
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromRGBO(55, 94, 97, 1),
                     padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
