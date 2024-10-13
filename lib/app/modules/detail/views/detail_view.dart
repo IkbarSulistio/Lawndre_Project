@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../controllers/detail_controller.dart';
+import '../widgets/controllers/webview_controller.dart';
 
 class DetailView extends StatelessWidget {
   final DetailController controller = Get.put(DetailController());
+  final WebviewController webviewController = Get.put(WebviewController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +46,25 @@ class DetailView extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               'Jangan sampe pakaian kalian terlalu lama menumpuk di dalam lemari, sedangkan setrika pun tak ada, atau bahkan tak sempat menyetrika karena terlalu sibuk. Simpan tenaga kalian, persiapkan diri untuk hari produktif esok hari. Soal nyuci, Lawndré adalah solusi.',
-              style: TextStyle(fontSize: 16, height: 1.5),
+              style: const TextStyle(fontSize: 16, height: 1.5),
             ),
-            SizedBox(height: 20),
-            Text(
-              'Kunjungi Instagram kami untuk informasi terbaru: ${controller.instagramHandle}',
-              style: TextStyle(fontSize: 16),
+            const SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {
+                Get.find<WebviewController>().updateUrl(
+                    'https://instagram.com/mylawndre');
+                Get.toNamed('/webview');
+              },
+              child: Text(
+                'Kunjungi Instagram kami untuk informasi terbaru: ${controller.instagramHandle}',
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'Lokasi kami: ${controller.address}',
               style: TextStyle(fontSize: 16),

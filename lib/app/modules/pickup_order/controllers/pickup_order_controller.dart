@@ -1,25 +1,12 @@
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geocoding/geocoding.dart';
 
 class PickupOrderController extends GetxController {
-  var selectedAddress = ''.obs;
-  var selectedLatLng = LatLng(-7.978469, 112.561741).obs; // Default location (UMM)
+  static const String apiKey = 'c87930a8a28c4c5eb8fe14188919e14b';
 
-  // Function to get the address from LatLng
-  Future<void> getAddressFromLatLng(LatLng position) async {
-    try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
-      Placemark place = placemarks[0];
-      selectedAddress.value = "${place.street}, ${place.locality}, ${place.country}";
-    } catch (e) {
-      selectedAddress.value = "No address available";
-    }
-  }
+  final String tileUrl =
+      'https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?&apiKey=$apiKey';
 
-  // Function called when user selects location on map
-  void selectLocation(LatLng position) {
-    selectedLatLng.value = position;
-    getAddressFromLatLng(position);
-  }
+  // Contoh koordinat peta default (Jakarta)
+  final double initialLat = -6.2088;
+  final double initialLon = 106.8456;
 }
