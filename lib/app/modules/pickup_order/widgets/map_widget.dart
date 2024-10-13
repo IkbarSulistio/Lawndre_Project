@@ -9,6 +9,7 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
   final TextEditingController _controller = TextEditingController();
   final MapController _mapController = MapController();
   LatLng? _location;
+  final List<Marker> _markers = []; // Store markers directly
 
   void _searchLocation() async {
     String address = _controller.text;
@@ -37,12 +38,43 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
     }
   }
 
+  void _addMarker(LatLng latLng) {
+    _markers.add(Marker(
+      point: latLng,
+      width: 80,
+      height: 80,
+      // Directly use the widget instead of using 'builder' or 'widget'
+      // Use a child widget directly
+      child: GestureDetector(
+        onTap: () {
+          // Show info dialog when marker tapped
+          showDialog(
+            context: Get.context!,
+            builder: (context) => AlertDialog(
+              title: const Text('Marker Info'),
+              content: Text('Location: ${latLng.latitude}, ${latLng.longitude}'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Close'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          );
+        },
+        child: const Icon(Icons.location_on, color: Colors.green, size: 40),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Geoapify Map'),
-        backgroundColor: const Color(0xFFAC9365),
+        title: const Text('Map'),
+        backgroundColor: Color.fromRGBO(55, 94, 97, 1),
       ),
       body: Column(
         children: [
@@ -65,7 +97,8 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
               mapController: _mapController,
               options: MapOptions(
                 onTap: (tapPosition, latLng) {
-                  print("Tapped at: ${latLng.latitude}, ${latLng.longitude}");
+                  // Menambahkan marker ketika peta di-tap
+                  _addMarker(latLng);
                 },
                 maxZoom: 13.0,
               ),
@@ -74,6 +107,9 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
                   urlTemplate:
                       'https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?apiKey=${local_map_controller.PickupOrderController.apiKey}',
                   tileProvider: NetworkTileProvider(),
+                ),
+                MarkerLayer(
+                  markers: _markers, // Menampilkan semua marker
                 ),
               ],
             ),

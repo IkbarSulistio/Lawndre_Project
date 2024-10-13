@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lawndre_project/app/modules/webview/controllers/webview_controller.dart';
 import '../controllers/detail_controller.dart';
-import '../widgets/controllers/webview_controller.dart';
 
 class DetailView extends StatelessWidget {
   final DetailController controller = Get.put(DetailController());

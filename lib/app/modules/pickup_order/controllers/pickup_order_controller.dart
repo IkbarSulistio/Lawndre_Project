@@ -5,8 +5,4 @@ class PickupOrderController extends GetxController {
 
   final String tileUrl =
       'https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?&apiKey=$apiKey';
-
-  // Contoh koordinat peta default (Jakarta)
-  final double initialLat = -6.2088;
-  final double initialLon = 106.8456;
 }

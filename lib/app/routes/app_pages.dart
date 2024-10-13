@@ -50,6 +50,8 @@ import '../modules/selimut_carpet_item/bindings/selimut_carpet_item_binding.dart
 import '../modules/selimut_carpet_item/views/selimut_carpet_item_view.dart';
 import '../modules/setrika_item/bindings/setrika_item_binding.dart';
 import '../modules/setrika_item/views/setrika_item_view.dart';
+import '../modules/webview/bindings/webview_binding.dart';
+import '../modules/webview/views/webview_view.dart';
 
 part 'app_routes.dart';
 
@@ -183,6 +185,11 @@ class AppPages {
       name: _Paths.QN_A,
       page: () => QnAView(),
       binding: QnABinding(),
+    ),
+    GetPage(
+      name: _Paths.WEBVIEW,
+      page: () => WebviewView(),
+      binding: WebviewBinding(),
     ),
   ];
 }
