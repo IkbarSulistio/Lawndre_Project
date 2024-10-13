@@ -9,32 +9,29 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
   final TextEditingController _controller = TextEditingController();
   final MapController _mapController = MapController();
   LatLng? _location;
-  final List<Marker> _markers = []; // Store markers directly
+  final List<Marker> _markers = [];
 
+  
   void _searchLocation() async {
     String address = _controller.text;
 
     try {
-      // Mencari lokasi dari alamat yang diberikan
+     
       List<Location> locations = await locationFromAddress(address);
       if (locations.isNotEmpty) {
-        // Ambil koordinat dari lokasi pertama
         Location location = locations.first;
         _location = LatLng(location.latitude, location.longitude);
-
-        // Pindahkan peta ke lokasi yang dicari
         _mapController.move(_location!, 15.0);
+        _addMarker(_location!);
       } else {
-        // Tampilkan pesan jika tidak ada lokasi ditemukan
-        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-          content: Text('Lokasi tidak ditemukan.'),
-        ));
+        ScaffoldMessenger.of(Get.context!).showSnackBar(
+          SnackBar(content: Text('Lokasi tidak ditemukan.')),
+        );
       }
     } catch (e) {
-      // Tangani kesalahan
-      ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
-        content: Text('Terjadi kesalahan: $e'),
-      ));
+      ScaffoldMessenger.of(Get.context!).showSnackBar(
+        SnackBar(content: Text('Terjadi kesalahan: $e')),
+      );
     }
   }
 
@@ -43,19 +40,17 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
       point: latLng,
       width: 80,
       height: 80,
-      // Directly use the widget instead of using 'builder' or 'widget'
-      // Use a child widget directly
       child: GestureDetector(
         onTap: () {
-          // Show info dialog when marker tapped
+       
           showDialog(
             context: Get.context!,
             builder: (context) => AlertDialog(
-              title: const Text('Marker Info'),
-              content: Text('Location: ${latLng.latitude}, ${latLng.longitude}'),
+              title: const Text('Informasi Marker'),
+              content: Text('Lokasi: ${latLng.latitude}, ${latLng.longitude}'),
               actions: <Widget>[
                 TextButton(
-                  child: const Text('Close'),
+                  child: const Text('Tutup'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -73,7 +68,7 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Map'),
+        title: const Text('Map Pencarian'),
         backgroundColor: Color.fromRGBO(55, 94, 97, 1),
       ),
       body: Column(
@@ -97,10 +92,9 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
               mapController: _mapController,
               options: MapOptions(
                 onTap: (tapPosition, latLng) {
-                  // Menambahkan marker ketika peta di-tap
                   _addMarker(latLng);
                 },
-                maxZoom: 13.0,
+                maxZoom: 18.0,
               ),
               children: [
                 TileLayer(
@@ -109,7 +103,7 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
                   tileProvider: NetworkTileProvider(),
                 ),
                 MarkerLayer(
-                  markers: _markers, // Menampilkan semua marker
+                  markers: _markers,
                 ),
               ],
             ),
