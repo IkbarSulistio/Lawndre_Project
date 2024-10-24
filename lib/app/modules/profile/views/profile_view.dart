@@ -87,6 +87,13 @@ class ProfileView extends StatelessWidget {
                       title: 'Alamat',
                       icon: FontAwesomeIcons.locationDot,
                       onTap: () => controller.onMenuItemTap('Alamat')),
+
+                  // Tambahkan menu untuk Logout
+                  MenuItem(
+                    title: 'Logout',
+                    icon: FontAwesomeIcons.signOutAlt,
+                    onTap: () => controller.onMenuItemTap('Logout'),
+                  ),
                 ],
               ),
             ),

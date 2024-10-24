@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lawndre_project/app/modules/home_page/views/home_page_view.dart';
 import '../controllers/login_controller.dart'; // Import LoginController
 
 class LoginView extends StatelessWidget {
