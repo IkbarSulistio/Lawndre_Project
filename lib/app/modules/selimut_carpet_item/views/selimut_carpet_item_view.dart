@@ -78,7 +78,7 @@ class SelimutCarpetItemView extends StatelessWidget {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
 
                     // Total items display directly below the ListView items
                     Container(
@@ -109,7 +109,7 @@ class SelimutCarpetItemView extends StatelessWidget {
             SizedBox(
               width: double.infinity, // Make the button full-width
               child: ElevatedButton(
-                onPressed: () => Get.to(SelimutCarpetView()),
+                onPressed: () => Get.to(const SelimutCarpetView()),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(
                       vertical: 16), // Increase button height
@@ -117,7 +117,7 @@ class SelimutCarpetItemView extends StatelessWidget {
                   foregroundColor: Colors.white, // Force the text color to white
                   textStyle: const TextStyle(fontSize: 18), // Button text style
                 ),
-                child: Text('Continue'),
+                child: const Text('Continue'),
               ),
             ),
           ],

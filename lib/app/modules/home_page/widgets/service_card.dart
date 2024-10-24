@@ -5,7 +5,7 @@ class ServiceCard extends StatelessWidget {
   final String icon;
   final Function() onTap; // Added onTap parameter
 
-  const ServiceCard({
+  const ServiceCard({super.key, 
     required this.title,
     required this.icon,
     required this.onTap, // Initialize the onTap parameter
@@ -18,7 +18,7 @@ class ServiceCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -27,7 +27,7 @@ class ServiceCard extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.3),
                   spreadRadius: 1,
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -37,10 +37,10 @@ class ServiceCard extends StatelessWidget {
               width: 40,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             title,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
         ],

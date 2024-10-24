@@ -6,6 +6,8 @@ import '../controllers/edit_profile_controller.dart';
 class EditProfileView extends StatelessWidget {
   final EditProfileController controller = Get.put(EditProfileController());
 
+  EditProfileView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,7 @@ class EditProfileView extends StatelessWidget {
                   radius: 60,
                   backgroundImage: profile.profileImage != null
                       ? FileImage(File(profile.profileImage!))
-                      : NetworkImage('https://via.placeholder.com/150') as ImageProvider,
+                      : const NetworkImage('https://via.placeholder.com/150') as ImageProvider,
                 ),
               ),
               const SizedBox(height: 16),

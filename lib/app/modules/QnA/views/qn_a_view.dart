@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lawndre_project/app/modules/home_page/views/home_page_view.dart';
 import '../controllers/qn_a_controller.dart';
 
 class QnAView extends StatelessWidget {

@@ -11,6 +11,8 @@ class BottomNavBarView extends StatelessWidget {
     ProfileView(),
   ];
 
+  BottomNavBarView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Obx(() => BottomNavigationBar(

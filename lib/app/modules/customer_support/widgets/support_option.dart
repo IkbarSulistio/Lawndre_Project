@@ -7,7 +7,7 @@ class SupportOption extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
-  SupportOption({
+  const SupportOption({super.key, 
     required this.icon,
     required this.label,
     required this.onTap,
@@ -22,14 +22,14 @@ class SupportOption extends StatelessWidget {
         child: Row(
           children: [
             Icon(icon, size: 28, color: Colors.black54),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: Text(
                 label,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
             ),
-            Icon(Icons.chevron_right, color: Colors.black54),
+            const Icon(Icons.chevron_right, color: Colors.black54),
           ],
         ),
       ),

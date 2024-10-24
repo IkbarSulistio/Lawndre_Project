@@ -11,6 +11,8 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
   LatLng? _location;
   final List<Marker> _markers = [];
 
+  MapWidget({super.key});
+
   
   void _searchLocation() async {
     String address = _controller.text;
@@ -25,7 +27,7 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
         _addMarker(_location!);
       } else {
         ScaffoldMessenger.of(Get.context!).showSnackBar(
-          SnackBar(content: Text('Lokasi tidak ditemukan.')),
+          const SnackBar(content: Text('Lokasi tidak ditemukan.')),
         );
       }
     } catch (e) {
@@ -69,7 +71,7 @@ class MapWidget extends GetView<local_map_controller.PickupOrderController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Map Pencarian'),
-        backgroundColor: Color.fromRGBO(55, 94, 97, 1),
+        backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
       ),
       body: Column(
         children: [

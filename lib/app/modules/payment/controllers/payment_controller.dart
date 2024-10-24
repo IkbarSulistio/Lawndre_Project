@@ -9,21 +9,21 @@ class PaymentController extends GetxController {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Payment'),
+          title: const Text('Confirm Payment'),
           content: Text('Are you sure you want to pay with $method?'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 // Add payment confirmation logic here
               },
-              child: Text('Confirm'),
+              child: const Text('Confirm'),
             ),
           ],
         );

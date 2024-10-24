@@ -10,7 +10,7 @@ class ServiceCard extends StatelessWidget {
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
 
-  ServiceCard({
+  const ServiceCard({super.key, 
     required this.title,
     required this.price,
     required this.quantity,
@@ -22,8 +22,8 @@ class ServiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Container(
-        margin: EdgeInsets.only(bottom: 10),
-        padding: EdgeInsets.all(16),
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -41,21 +41,21 @@ class ServiceCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
-                Text("Total : Rp. ${quantity.value * price}", style: TextStyle(fontSize: 14)),
+                Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
+                Text("Total : Rp. ${quantity.value * price}", style: const TextStyle(fontSize: 14)),
               ],
             ),
             Row(
               children: [
                 IconButton(
                   onPressed: onDecrement,
-                  icon: Icon(Icons.remove, color: Color.fromRGBO(55, 94, 97, 1)),
+                  icon: const Icon(Icons.remove, color: Color.fromRGBO(55, 94, 97, 1)),
                 ),
-                Text(quantity.value.toString(), style: TextStyle(fontSize: 16)),
+                Text(quantity.value.toString(), style: const TextStyle(fontSize: 16)),
                 IconButton(
                   onPressed: onIncrement,
-                  icon: Icon(Icons.add, color: Color.fromRGBO(55, 94, 97, 1)),
+                  icon: const Icon(Icons.add, color: Color.fromRGBO(55, 94, 97, 1)),
                 ),
               ],
             ),

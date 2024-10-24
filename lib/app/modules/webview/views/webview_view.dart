@@ -17,7 +17,7 @@ class WebviewView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Webview'),
+        title: const Text('Webview'),
       ),
       body: Obx(() {
         // Return WebViewWidget with updated URL when the observable changes
@@ -29,3 +29,4 @@ class WebviewView extends StatelessWidget {
     );
   }
 }
+ 

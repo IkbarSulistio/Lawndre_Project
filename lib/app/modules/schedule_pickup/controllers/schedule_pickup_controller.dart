@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class SchedulePickupController extends GetxController {
   // Observable date and time
   var selectedDate = DateTime.now().obs;
-  var selectedStartTime = TimeOfDay(hour: 12, minute: 0).obs;
-  var selectedEndTime = TimeOfDay(hour: 14, minute: 0).obs;
+  var selectedStartTime = const TimeOfDay(hour: 12, minute: 0).obs;
+  var selectedEndTime = const TimeOfDay(hour: 14, minute: 0).obs;
 
   // Function to select a date
   Future<void> pickDate(BuildContext context) async {

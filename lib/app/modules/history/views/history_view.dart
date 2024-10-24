@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lawndre_project/app/modules/profile/views/bottom_nav_bar_view.dart';
 
 import '../controllers/history_controller.dart';
 import '../widgets/order_item.dart';
@@ -8,6 +9,8 @@ import '../widgets/order_item.dart';
 class HistoryView extends StatelessWidget {
   final HistoryController controller = Get.put(HistoryController());
 
+  HistoryView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,12 +18,12 @@ class HistoryView extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Riwayat Pesanan',
           style: TextStyle(color: Colors.black),
         ),
@@ -43,29 +46,7 @@ class HistoryView extends StatelessWidget {
           );
         }),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xFFE3F2F1),
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Beranda',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.swap_horiz),
-              label: 'Transaksi',
-              ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.history),
-              label: 'Riwayat',
-              ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profil',
-              ),
-      ],
-      )
+      bottomNavigationBar: BottomNavBarView(),
     );
   }
 }

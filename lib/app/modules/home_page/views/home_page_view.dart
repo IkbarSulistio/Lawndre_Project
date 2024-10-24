@@ -14,6 +14,8 @@ import '../widgets/service_card.dart';
 class HomePageView extends StatelessWidget {
   final HomePageController controller = Get.put(HomePageController());
 
+  HomePageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,43 +25,43 @@ class HomePageView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 40,
                     backgroundImage: AssetImage('assets/images/profile.png'),
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Obx(() => Text(
                         controller.userName.value,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       )),
                       Obx(() => Text(
                         controller.userPhone.value,
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       )),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(227, 242, 241, 1),
+                  color: const Color.fromRGBO(227, 242, 241, 1),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -78,26 +80,26 @@ class HomePageView extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () => Get.to(CouponView()),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(55, 94, 97, 1),
+                        backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
                       ),
-                      child: Text("Disini", style: TextStyle(color: Colors.white),),
+                      child: const Text("Disini", style: TextStyle(color: Colors.white),),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 30),
-              Text(
+              const SizedBox(height: 30),
+              const Text(
                 "Layanan :",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 14),
+              const SizedBox(height: 14),
               GridView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
@@ -121,7 +123,7 @@ class HomePageView extends StatelessWidget {
                   ServiceCard(
                     title: 'Cuci Ransel',
                     icon: 'cuci_ransel.png',
-                    onTap: () => Get.to(CuciRanselView()), // Navigate to Cuci Ransel page
+                    onTap: () => Get.to(const CuciRanselView()), // Navigate to Cuci Ransel page
                   ),
                   ServiceCard(
                     title: 'Selimut dan Carpet',

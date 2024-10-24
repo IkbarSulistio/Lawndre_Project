@@ -168,12 +168,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CUCI_RANSEL,
-      page: () => CuciRanselView(),
+      page: () => const CuciRanselView(),
       binding: CuciRanselBinding(),
     ),
     GetPage(
       name: _Paths.SELIMUT_CARPET,
-      page: () => SelimutCarpetView(),
+      page: () => const SelimutCarpetView(),
       binding: SelimutCarpetBinding(),
     ),
     GetPage(
@@ -188,7 +188,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.WEBVIEW,
-      page: () => WebviewView(),
+      page: () => const WebviewView(),
       binding: WebviewBinding(),
     ),
   ];

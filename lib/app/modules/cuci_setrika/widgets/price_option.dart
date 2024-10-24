@@ -9,7 +9,7 @@ class PriceOption extends StatelessWidget {
   final int regularPrice;
   final int expressPrice;
 
-  PriceOption({
+  const PriceOption({super.key, 
     required this.weight,
     required this.regularPrice,
     required this.expressPrice,
@@ -20,11 +20,11 @@ class PriceOption extends StatelessWidget {
     final CuciSetrikaController controller = Get.find<CuciSetrikaController>();
 
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 6,
@@ -35,7 +35,7 @@ class PriceOption extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('$weight Kg', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text('$weight Kg', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -44,7 +44,7 @@ class PriceOption extends StatelessWidget {
                 price: regularPrice,
                 onPressed: () => controller.goToRegularPage(weight),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               _buildPriceButton(
                 label: 'Express',
                 price: expressPrice,
@@ -61,15 +61,15 @@ class PriceOption extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        backgroundColor: Color.fromRGBO(55, 94, 97, 1),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       child: Row(
         children: [
-          Text(label, style: TextStyle(color: Colors.white)),
-          SizedBox(width: 8),
-          Text('Rp.$price', style: TextStyle(color: Colors.white, fontSize: 16)),
+          Text(label, style: const TextStyle(color: Colors.white)),
+          const SizedBox(width: 8),
+          Text('Rp.$price', style: const TextStyle(color: Colors.white, fontSize: 16)),
         ],
       ),
     );

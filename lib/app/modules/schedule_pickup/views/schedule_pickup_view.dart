@@ -5,13 +5,15 @@ import 'package:lawndre_project/app/modules/payment/views/payment_view.dart';
 import '../controllers/schedule_pickup_controller.dart';
 
 class SchedulePickupView extends StatelessWidget {
+  const SchedulePickupView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final SchedulePickupController controller = Get.put(SchedulePickupController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Schedule Pickup'),
+        title: const Text('Schedule Pickup'),
         centerTitle: true,
       ),
       body: Padding(
@@ -19,15 +21,15 @@ class SchedulePickupView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Pickup Hari & Jam",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildDateField(controller, context),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTimeField(controller, context),
-            Spacer(),
+            const Spacer(),
             _buildConfirmButton(),
           ],
         ),
@@ -40,7 +42,7 @@ class SchedulePickupView extends StatelessWidget {
     return Obx(() => GestureDetector(
       onTap: () => controller.pickDate(context),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.grey.shade300),
@@ -50,7 +52,7 @@ class SchedulePickupView extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -59,9 +61,9 @@ class SchedulePickupView extends StatelessWidget {
           children: [
             Text(
               "${controller.selectedDate.value.toLocal()}".split(' ')[0],
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            Icon(Icons.calendar_today),
+            const Icon(Icons.calendar_today),
           ],
         ),
       ),
@@ -75,7 +77,7 @@ class SchedulePickupView extends StatelessWidget {
         GestureDetector(
           onTap: () => controller.pickStartTime(context),
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.grey.shade300),
@@ -85,7 +87,7 @@ class SchedulePickupView extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.3),
                   spreadRadius: 1,
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -94,18 +96,18 @@ class SchedulePickupView extends StatelessWidget {
               children: [
                 Text(
                   "Start: ${controller.selectedStartTime.value.format(context)}",
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
-                Icon(Icons.access_time),
+                const Icon(Icons.access_time),
               ],
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         GestureDetector(
           onTap: () => controller.pickEndTime(context),
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.grey.shade300),
@@ -115,7 +117,7 @@ class SchedulePickupView extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.3),
                   spreadRadius: 1,
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -124,9 +126,9 @@ class SchedulePickupView extends StatelessWidget {
               children: [
                 Text(
                   "End: ${controller.selectedEndTime.value.format(context)}",
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 ),
-                Icon(Icons.access_time),
+                const Icon(Icons.access_time),
               ],
             ),
           ),
@@ -142,13 +144,13 @@ class SchedulePickupView extends StatelessWidget {
         onPressed: () {
           Get.to(PaymentView());
         },
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+          backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
+        ),
         child: Text(
           'Confirm',
           style: TextStyle(color: Colors.white),
-        ),
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-          backgroundColor: Color.fromRGBO(55, 94, 97, 1),
         ),
       ),
     );

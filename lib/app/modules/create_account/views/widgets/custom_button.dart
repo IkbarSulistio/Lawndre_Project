@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final Widget? icon;
 
-  CustomButton({
+  const CustomButton({super.key, 
     required this.text,
     required this.onPressed,
     this.backgroundColor = const Color.fromRGBO(55, 94, 97, 1),
@@ -20,16 +20,15 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed, // This will allow it to be null
       style: ElevatedButton.styleFrom(
-        primary: backgroundColor,
-        onPrimary: textColor,
-        minimumSize: Size(double.infinity, 50), // Ensure it takes full width
+        foregroundColor: textColor, backgroundColor: backgroundColor,
+        minimumSize: const Size(double.infinity, 50), // Ensure it takes full width
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (icon != null) ...[
             icon!,
-            SizedBox(width: 8),
+            const SizedBox(width: 8),
           ],
           Text(text),
         ],

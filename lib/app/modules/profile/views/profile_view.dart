@@ -9,7 +9,7 @@ import '../widgets/menu_item.dart';
 class ProfileView extends StatelessWidget {
   final ProfileController controller = Get.put(ProfileController());
 
-  ProfileView({Key? key}) : super(key: key);
+  ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {

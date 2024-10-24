@@ -5,13 +5,15 @@ import 'package:lawndre_project/app/modules/payment/controllers/payment_controll
 import 'package:lawndre_project/app/modules/pickup_order/views/pickup_order_view.dart';
 
 class PaymentView extends StatelessWidget {
+  const PaymentView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final PaymentController controller = Get.put(PaymentController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment'),
+        title: const Text('Payment'),
         centerTitle: true,
       ),
       body: Center( // Gunakan Center untuk menempatkan semuanya di tengah
@@ -21,11 +23,11 @@ class PaymentView extends StatelessWidget {
             mainAxisSize: MainAxisSize.min, // Menggunakan min agar hanya sesuai konten
             crossAxisAlignment: CrossAxisAlignment.center, // Posisikan elemen di tengah secara horizontal
             children: [
-              Text(
+              const Text(
                 'Select your payment method',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               _buildPaymentButton(
                 context,
                 'Cash',
@@ -33,7 +35,7 @@ class PaymentView extends StatelessWidget {
                 Colors.green,
                 () => controller.showConfirmationDialog(context, 'Cash'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _buildPaymentButton(
                 context,
                 'E-Cash',
@@ -41,7 +43,7 @@ class PaymentView extends StatelessWidget {
                 Colors.blue,
                 () => controller.showConfirmationDialog(context, 'E-Cash'),
               ),
-              SizedBox(height: 40), // Beri jarak antara tombol metode pembayaran dan tombol Confirm
+              const SizedBox(height: 40), // Beri jarak antara tombol metode pembayaran dan tombol Confirm
               _buildConfirmButton(),
             ],
           ),
@@ -55,9 +57,9 @@ class PaymentView extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: onPressed,
       icon: Icon(icon, color: Colors.white),
-      label: Text(title, style: TextStyle(fontSize: 18, color: Colors.white)),
+      label: Text(title, style: const TextStyle(fontSize: 18, color: Colors.white)),
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
         backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -70,11 +72,11 @@ class PaymentView extends StatelessWidget {
   Widget _buildConfirmButton() {
     return ElevatedButton(
       onPressed: () => Get.to(PickupOrderView()),
-      child: Text('Confirm', style: TextStyle(color: Colors.white)),
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-        backgroundColor: Color.fromRGBO(55, 94, 97, 1),
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+        backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
       ),
+      child: Text('Confirm', style: TextStyle(color: Colors.white)),
     );
   }
 }

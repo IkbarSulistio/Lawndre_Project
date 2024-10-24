@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:lawndre_project/app/modules/home_page/views/home_page_view.dart';
 
 class CouponView extends StatefulWidget {
+  const CouponView({super.key});
+
   @override
   _CouponSelectionViewState createState() => _CouponSelectionViewState();
 }
@@ -15,7 +17,7 @@ class _CouponSelectionViewState extends State<CouponView> {
     return Scaffold(
       backgroundColor: Colors.lightBlue[50],
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Special Offers',
           style: TextStyle(color: Colors.black),
         ),
@@ -23,7 +25,7 @@ class _CouponSelectionViewState extends State<CouponView> {
         backgroundColor: Colors.lightBlue[50],
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.back(),
         ),
       ),
@@ -32,7 +34,7 @@ class _CouponSelectionViewState extends State<CouponView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Select your Coupon',
               style: TextStyle(
                 fontSize: 18,
@@ -40,22 +42,22 @@ class _CouponSelectionViewState extends State<CouponView> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildCouponCard(0),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             _buildCouponCard(1),
-            Spacer(),
+            const Spacer(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () => Get.off(HomePageView()),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 16), backgroundColor: Colors.green[700],
+                  padding: const EdgeInsets.symmetric(vertical: 16), backgroundColor: Colors.green[700],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Confirm',
                   style: TextStyle(
                     color: Colors.white,
@@ -82,11 +84,11 @@ class _CouponSelectionViewState extends State<CouponView> {
           color: Colors.lightBlue[100],
           borderRadius: BorderRadius.circular(16),
         ),
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(

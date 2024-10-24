@@ -5,13 +5,15 @@ import 'package:lawndre_project/app/modules/cuci_Setrika/views/cuci_setrika_view
 import '../controllers/setrika_item_controller.dart';
 
 class SetrikaItemView extends StatelessWidget {
+  const SetrikaItemView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final SetrikaItemController controller = Get.put(SetrikaItemController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cuci Setrika"),
+        title: const Text("Cuci Setrika"),
         centerTitle: true,
       ),
       body: Padding(
@@ -23,22 +25,22 @@ class SetrikaItemView extends StatelessWidget {
             _buildItemBox("assets/images/celana.png", "Celana", "celana", controller),
             _buildItemBox("assets/images/jaket.png", "Jaket", "jaket", controller),
             _buildItemBox(null, "Lain-nya", "lainnya", controller),  // No image for "Lain-nya"
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTotalItems(controller),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Get.to(CuciSetrikaView());  // Replace with the destination page you want to navigate to
               },
+              style: ElevatedButton.styleFrom(
+                
+                padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 15),
+                backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
+              ),
               child: Text(
                 "Continue", 
                 style: TextStyle(color: Colors.white),
                 ),
-              style: ElevatedButton.styleFrom(
-                
-                padding: EdgeInsets.symmetric(horizontal: 150, vertical: 15),
-                backgroundColor: Color.fromRGBO(55, 94, 97, 1),
-              ),
             ),
           ],
         ),
@@ -60,11 +62,11 @@ class SetrikaItemView extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 5,
-              offset: Offset(0, 3), // Shadow position
+              offset: const Offset(0, 3), // Shadow position
             ),
           ],
         ),
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -83,20 +85,20 @@ class SetrikaItemView extends StatelessWidget {
                       child: Image.asset(imagePath, fit: BoxFit.contain), // Item image
                     ),
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
                 ],
                 Text(
                   label,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
             Row(
               children: [
                 IconButton(
-                  icon: Icon(Icons.remove),
+                  icon: const Icon(Icons.remove),
                   onPressed: () => controller.decrement(item),
-                  color: Color.fromRGBO(55, 94, 97, 1),
+                  color: const Color.fromRGBO(55, 94, 97, 1),
                 ),
                 Obx(() {
                   // Observe the count dynamically
@@ -112,13 +114,13 @@ class SetrikaItemView extends StatelessWidget {
                     case 'lainnya':
                       return Text("${controller.lainnyaCount.value}");
                     default:
-                      return Text("0");
+                      return const Text("0");
                   }
                 }),
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                   onPressed: () => controller.increment(item),
-                  color: Color.fromRGBO(55, 94, 97, 1),
+                  color: const Color.fromRGBO(55, 94, 97, 1),
                 ),
               ],
             ),
@@ -131,17 +133,17 @@ class SetrikaItemView extends StatelessWidget {
   // Total items widget with styling
   Widget _buildTotalItems(SetrikaItemController controller) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(12),
-        color: Color.fromRGBO(227, 242, 241, 1),
+        color: const Color.fromRGBO(227, 242, 241, 1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Total Items:", style: TextStyle(fontSize: 16)),
-          Obx(() => Text("${controller.totalItems}", style: TextStyle(fontSize: 16))),
+          const Text("Total Items:", style: TextStyle(fontSize: 16)),
+          Obx(() => Text("${controller.totalItems}", style: const TextStyle(fontSize: 16))),
         ],
       ),
     );

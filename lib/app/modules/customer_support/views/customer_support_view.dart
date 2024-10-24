@@ -6,16 +6,18 @@ import '../controllers/customer_support_controller.dart';
 import '../widgets/support_option.dart';
 
 class CustomerSupportView extends StatelessWidget {
+  const CustomerSupportView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final CustomerSupportController controller = Get.put(CustomerSupportController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pusat Bantuan', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        title: const Text('Pusat Bantuan', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
         backgroundColor: Colors.transparent,

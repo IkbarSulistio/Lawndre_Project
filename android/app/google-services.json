@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "37918663319",
+    "project_id": "lawndre-1c357",
+    "storage_bucket": "lawndre-1c357.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37918663319:android:2b694440549b3c932fbfd2",
+        "android_client_info": {
+          "package_name": "com.example.lawndre_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3rs3drmE1j0mi6yEoFq8xJo7pw_4nJ3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

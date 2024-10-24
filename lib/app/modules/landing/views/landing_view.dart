@@ -8,6 +8,8 @@ import '../controllers/landing_controller.dart';
 class LandingView extends StatelessWidget {
   final LandingController controller = Get.put(LandingController());
 
+  LandingView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -16,7 +18,7 @@ class LandingView extends StatelessWidget {
     return Container(
       width: screenWidth,
       height: screenHeight,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color.fromRGBO(252, 252, 253, 1),
       ),
       child: Stack(
@@ -27,7 +29,7 @@ class LandingView extends StatelessWidget {
             child: Container(
               width: screenWidth,
               height: screenHeight * 0.6,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromRGBO(227, 242, 241, 1),
               ),
             ),
@@ -40,13 +42,13 @@ class LandingView extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () => Get.to(CreateAccountView()), // Navigate to Create Account
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(55, 94, 97, 1), // Button background color
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                backgroundColor: const Color.fromRGBO(55, 94, 97, 1), // Button background color
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8), // Button shape
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Create Account',
                 style: TextStyle(
                   color: Color.fromRGBO(227, 242, 241, 1), // Button text color
@@ -66,13 +68,13 @@ class LandingView extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () => Get.to(LoginView()),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(55, 94, 97, 1),
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Login',
                 style: TextStyle(
                   color: Color.fromRGBO(227, 242, 241, 1),
@@ -92,13 +94,13 @@ class LandingView extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () => Get.to(DetailView()), // Add functionality later
               style: ElevatedButton.styleFrom(
-                primary: Color.fromRGBO(55, 94, 97, 1),
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Details',
                 style: TextStyle(
                   color: Color.fromRGBO(227, 242, 241, 1),
@@ -112,10 +114,10 @@ class LandingView extends StatelessWidget {
           Positioned(
             top: screenHeight * 0.45,
             left: screenWidth * 0.1,
-            child: Container(
+            child: SizedBox(
               width: screenWidth * 0.7,
               height: screenHeight * 0.07,
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -141,7 +143,7 @@ class LandingView extends StatelessWidget {
           Positioned(
             top: 240,
             left: 248,
-            child: Container(
+            child: SizedBox(
               width: 200,
               height: 200,
               child: Image.asset(

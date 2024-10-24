@@ -6,7 +6,7 @@ class StarRating extends StatelessWidget {
   final int rating; // Current rating value
   final ValueChanged<int> onRatingSelected; // Callback function
 
-  StarRating({required this.rating, required this.onRatingSelected});
+  const StarRating({super.key, required this.rating, required this.onRatingSelected});
 
   Widget buildStar(int index) {
     return GestureDetector(

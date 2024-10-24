@@ -5,16 +5,18 @@ import '../controllers/pickup_order_controller.dart';
 import '../widgets/map_widget.dart';
 
 class PickupOrderView extends StatelessWidget {
+  const PickupOrderView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final PickupOrderController controller = Get.put(PickupOrderController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pickup Order'),
+        title: const Text('Pickup Order'),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
       ),
@@ -24,7 +26,7 @@ class PickupOrderView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Detail jarak dan waktu pickup
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
@@ -38,10 +40,10 @@ class PickupOrderView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Lokasi 1
-            Row(
+            const Row(
               children: [
                 Icon(Icons.location_on_outlined, color: Color.fromRGBO(49, 90, 57, 1)),
                 SizedBox(width: 10),
@@ -54,10 +56,10 @@ class PickupOrderView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Lokasi 2
-            Row(
+            const Row(
               children: [
                 Icon(Icons.location_on, color: Color.fromRGBO(49, 90, 57, 1)),
                 SizedBox(width: 10),
@@ -70,16 +72,16 @@ class PickupOrderView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Berat barang
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
               decoration: BoxDecoration(
-                border: Border.all(color: Color.fromRGBO(49, 90, 57, 1)),
+                border: Border.all(color: const Color.fromRGBO(49, 90, 57, 1)),
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -89,39 +91,39 @@ class PickupOrderView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Harga yang harus dibayarkan oleh pelanggan
-            Text(
+            const Text(
               'Payable by Customer Rp89.000',  // Ganti dengan harga dinamis
               style: TextStyle(fontSize: 16),
             ),
-            Spacer(),
+            const Spacer(),
 
             // Tombol untuk memilih lokasi di peta
             ElevatedButton(
               onPressed: () {
                 Get.to(() => MapWidget()); // Navigate to map page
               },
-              child: Text('Select Location on Map', style: TextStyle(color: Colors.white),),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 115),
-                backgroundColor: Color.fromRGBO(55, 94, 97, 1),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 115),
+                backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
               ),
+              child: Text('Select Location on Map', style: TextStyle(color: Colors.white),),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Tombol Pickup Now
             ElevatedButton(
               onPressed: () => Get.to(NotaPemesananView()),
-              child: Text('PICKUP NOW', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 145),
-                backgroundColor: Color.fromRGBO(55, 94, 97, 1),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 145),
+                backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+              child: Text('PICKUP NOW', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),

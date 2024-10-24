@@ -6,14 +6,16 @@ import '../controllers/cuci_setrika_controller.dart';
 import '../widgets/price_option.dart';
 
 class CuciSetrikaView extends StatelessWidget {
+  const CuciSetrikaView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final CuciSetrikaController controller = Get.put(CuciSetrikaController());
 
     return Scaffold(
-      backgroundColor: Color(0xFFE0F2F1), // Background color
+      backgroundColor: const Color(0xFFE0F2F1), // Background color
       appBar: AppBar(
-        title: Text('Cuci Setrika', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        title: const Text('Cuci Setrika', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -23,8 +25,8 @@ class CuciSetrikaView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Pilih Berat:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            SizedBox(height: 16),
+            const Text('Pilih Berat:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            const SizedBox(height: 16),
             Expanded(
               child: ListView(
                 children: [
@@ -33,13 +35,13 @@ class CuciSetrikaView extends StatelessWidget {
                     regularPrice: controller.getRegularPrice(0),
                     expressPrice: controller.getExpressPrice(0),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   PriceOption(
                     weight: 5,
                     regularPrice: controller.getRegularPrice(1),
                     expressPrice: controller.getExpressPrice(1),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   PriceOption(
                     weight: 7,
                     regularPrice: controller.getRegularPrice(2),

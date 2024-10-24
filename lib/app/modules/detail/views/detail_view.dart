@@ -7,6 +7,8 @@ class DetailView extends StatelessWidget {
   final DetailController controller = Get.put(DetailController());
   final WebviewController webviewController = Get.put(WebviewController());
 
+  DetailView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,10 +16,10 @@ class DetailView extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Get.back(),
         ),
-        title: Text(
+        title: const Text(
           'Lawndre',
           style: TextStyle(
             color: Colors.black,
@@ -32,21 +34,21 @@ class DetailView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Cucian numpuk di pojokan kamar, nyempil di kolong kasur, bawa ke Lawndré aja. Solusi tepat bagi yang tak sempat.',
               style: TextStyle(fontSize: 16, height: 1.5),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Kami menyediakan berbagai layanan:',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildServiceList(),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Jangan sampe pakaian kalian terlalu lama menumpuk di dalam lemari, sedangkan setrika pun tak ada, atau bahkan tak sempat menyetrika karena terlalu sibuk. Simpan tenaga kalian, persiapkan diri untuk hari produktif esok hari. Soal nyuci, Lawndré adalah solusi.',
-              style: const TextStyle(fontSize: 16, height: 1.5),
+              style: TextStyle(fontSize: 16, height: 1.5),
             ),
             const SizedBox(height: 20),
             GestureDetector(
@@ -67,7 +69,7 @@ class DetailView extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               'Lokasi kami: ${controller.address}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),
@@ -92,7 +94,7 @@ class DetailView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: Text(
             '${services.indexOf(service) + 1}. $service',
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         );
       }).toList(),

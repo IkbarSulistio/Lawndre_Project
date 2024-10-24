@@ -6,13 +6,15 @@ import '../controllers/feedback_rating_controller.dart';
 import '../widgets/star_rating.dart';
 
 class FeedbackRatingView extends StatelessWidget {
+  const FeedbackRatingView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final FeedbackRatingController controller = Get.put(FeedbackRatingController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Feedback & Rating',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
@@ -20,7 +22,7 @@ class FeedbackRatingView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
         ),
       ),
@@ -29,34 +31,34 @@ class FeedbackRatingView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Rating', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            SizedBox(height: 10),
+            const Text('Rating', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            const SizedBox(height: 10),
             Obx(
               () => StarRating(
                 rating: controller.rating.value,
                 onRatingSelected: (value) => controller.setRating(value),
               ),
             ),
-            SizedBox(height: 20),
-            Text('Feedback', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            SizedBox(height: 10),
+            const SizedBox(height: 20),
+            const Text('Feedback', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            const SizedBox(height: 10),
             TextField(
               maxLines: 5,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Type your feedback here',
               ),
               onChanged: (text) => controller.setFeedbackText(text),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: controller.submitFeedback,
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.teal, // Button color
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  backgroundColor: Colors.teal, // Button color
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
-                child: Text(
+                child: const Text(
                   'SUBMIT',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
