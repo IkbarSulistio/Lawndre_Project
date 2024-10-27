@@ -1,15 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:lawndre_project/app/modules/profile/views/bottom_nav_bar_view.dart';
 import '../controllers/nota_pemesanan_controller.dart';
 
-class NotaPemesananView extends StatelessWidget {
+class NotaPemesananView extends StatefulWidget {
   const NotaPemesananView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final NotaPemesananController controller = Get.put(NotaPemesananController());
+  _NotaPemesananViewState createState() => _NotaPemesananViewState();
+}
 
+class _NotaPemesananViewState extends State<NotaPemesananView> {
+  final NotaPemesananController controller = Get.put(NotaPemesananController());
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final FlutterLocalNotificationsPlugin _localNotification = FlutterLocalNotificationsPlugin();
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeNotifications();
+    _sendNotification();
+  }
+
+  Future<void> _initializeNotifications() async {
+    // Inisialisasi Flutter Local Notifications
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const InitializationSettings initializationSettings = InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: DarwinInitializationSettings(),
+    );
+
+    await _localNotification.initialize(initializationSettings);
+  }
+
+  Future<void> _sendNotification() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'nota_pemesanan_channel',
+      'Notifikasi Pesanan',
+      channelDescription: 'Notifikasi untuk pembaruan pesanan',
+      importance: Importance.max,
+      priority: Priority.high,
+      icon: '@mipmap/ic_launcher',
+    );
+
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+      iOS: DarwinNotificationDetails(),
+    );
+
+    await _localNotification.show(
+      0, // Unique ID for the notification
+      'Selamat datang di Rincian Pesanan',
+      'Halaman ini menunjukkan rincian pesanan Anda.',
+      platformChannelSpecifics,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rincian Pesanan'),
@@ -116,8 +168,6 @@ class NotaPemesananView extends StatelessWidget {
               ],
             )),
             const SizedBox(height: 10),
-
-            
           ],
         ),
       ),
