@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:lawndre_project/app/modules/edit_profile/views/edit_profile_view.dart';
+import 'package:lawndre_project/app/modules/profile/views/bottom_nav_bar_view.dart';
 import '../controllers/profile_controller.dart';
-import '../views/bottom_nav_bar_view.dart';
 import '../widgets/menu_item.dart';
 
 class ProfileView extends StatelessWidget {
@@ -24,12 +26,25 @@ class ProfileView extends StatelessWidget {
           children: [
             Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 16.0),
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundImage: NetworkImage('https://via.placeholder.com/150'),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Obx(() {
+                    // Determine if the profile image is a local file or a network image
+                    String imagePath = controller.profileImage.value;
+
+                    // Check if imagePath is a valid URL
+                    bool isNetworkImage = imagePath.startsWith('http') || imagePath.startsWith('https');
+
+                    return CircleAvatar(
+                      radius: 60,
+                      backgroundImage: isNetworkImage 
+                          ? NetworkImage(imagePath) 
+                          : FileImage(File(imagePath)) as ImageProvider, // Use FileImage for local images
+                      onBackgroundImageError: (error, stackTrace) {
+                        print("Error loading image: $error");
+                      },
+                    );
+                  }),
                 ),
                 Expanded(
                   child: Padding(
@@ -37,17 +52,17 @@ class ProfileView extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Column(
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'User Name',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(height: 4),
-                            Text('user@example.com'),
-                            SizedBox(height: 4),
-                            Text('+1234567890'),
+                            Obx(() => Text(
+                              controller.userName.value,
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            )),
+                            const SizedBox(height: 4),
+                            Obx(() => Text(controller.email.value)),
+                            const SizedBox(height: 4),
+                            Obx(() => Text(controller.phoneNumber.value)),
                           ],
                         ),
                         IconButton(
@@ -87,8 +102,6 @@ class ProfileView extends StatelessWidget {
                       title: 'Alamat',
                       icon: FontAwesomeIcons.locationDot,
                       onTap: () => controller.onMenuItemTap('Alamat')),
-
-                  // Tambahkan menu untuk Logout
                   MenuItem(
                     title: 'Logout',
                     icon: FontAwesomeIcons.signOutAlt,
