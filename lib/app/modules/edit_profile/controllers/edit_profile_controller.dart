@@ -138,31 +138,6 @@ class EditProfileController extends GetxController {
     }
   }
 
-  void recordVideo() async {
-    try {
-      final pickedVideo = await _picker.pickVideo(source: ImageSource.camera);
-      if (pickedVideo != null) {
-        // Save video path to GetStorage
-        _storage.write('profileVideo', pickedVideo.path);
-
-        // Update video path and initialize VideoPlayerController
-        videoPath.value = pickedVideo.path;
-        videoPlayerController = VideoPlayerController.file(File(pickedVideo.path))
-          ..initialize().then((_) {
-            videoPlayerController!.play(); // Auto-play video
-            update(); // Update UI
-          });
-      } else {
-        Get.snackbar("Info", "No video recorded",
-            snackPosition: SnackPosition.BOTTOM);
-      }
-    } catch (e) {
-      Get.snackbar("Error", "Failed to record video",
-          snackPosition: SnackPosition.BOTTOM);
-      print('Error recording video: $e');
-    }
-  }
-
   void updateUserName(String name) {
     profile.update((val) {
       val!.userName = name;

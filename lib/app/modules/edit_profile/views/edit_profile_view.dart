@@ -51,10 +51,6 @@ class EditProfileView extends StatelessWidget {
                   controller: controller.phoneNumberController,
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: controller.recordVideo,
-                  child: const Text('Record Video'),
-                ),
                 const SizedBox(height: 20),
                 if (controller.videoPath.isNotEmpty)
                   Container(
