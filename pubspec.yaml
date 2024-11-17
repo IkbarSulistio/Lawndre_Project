@@ -25,6 +25,10 @@ dependencies:
   firebase_analytics: ^11.3.3
   get_storage: ^2.1.1
   video_player: ^2.9.1
+  camera: ^0.11.0+2
+  path_provider: 2.1.5
+  speech_to_text: ^7.0.0
+  audioplayers: ^5.2.1
 
 dev_dependencies: 
   flutter_lints: ^4.0.0
@@ -45,5 +49,7 @@ flutter:
     - assets/images/kaos.png
     - assets/images/kemeja.png
     - assets/images/celana.png
+    - assets\audio\confirm_sound.mp3
+    - assets\audio\simple-notification-152054.mp3
   uses-material-design: true
 

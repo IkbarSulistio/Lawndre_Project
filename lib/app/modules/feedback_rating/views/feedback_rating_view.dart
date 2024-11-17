@@ -1,7 +1,6 @@
-// views/feedback_view.dart
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
 import '../controllers/feedback_rating_controller.dart';
 import '../widgets/star_rating.dart';
 
@@ -26,7 +25,7 @@ class FeedbackRatingView extends StatelessWidget {
           onPressed: () => Get.back(),
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,13 +48,73 @@ class FeedbackRatingView extends StatelessWidget {
                 hintText: 'Type your feedback here',
               ),
               onChanged: (text) => controller.setFeedbackText(text),
+              controller: TextEditingController(text: controller.feedbackText.value),
             ),
+            const SizedBox(height: 10),
+            Obx(
+              () => ElevatedButton(
+                onPressed: controller.toggleSpeechToText,
+                child: Text(controller.isListening.value ? 'Stop Listening' : 'Start Listening'),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text('Video Feedback', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+            const SizedBox(height: 10),
+            Obx(() {
+              if (controller.videoPath.value.isNotEmpty) {
+                return GestureDetector(
+                  onTap: controller.playPauseVideo,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: controller.videoPlayerController != null &&
+                                controller.videoPlayerController!.value.isInitialized
+                            ? AspectRatio(
+                                aspectRatio: controller.videoPlayerController!.value.aspectRatio,
+                                child: VideoPlayer(controller.videoPlayerController!),
+                              )
+                            : const Center(child: CircularProgressIndicator()),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(controller.isVideoPlaying.value ? 'Tap to pause video' : 'Tap to play video'),
+                    ],
+                  ),
+                );
+              } else {
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: controller.recordVideo,
+                          child: const Text('Record Video'),
+                        ),
+                        const SizedBox(width: 20),
+                        ElevatedButton(
+                          onPressed: controller.pickVideoFromGallery,
+                          child: const Text('Pick Video from Gallery'),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    const Text('No video selected yet.'),
+                  ],
+                );
+              }
+            }),
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: controller.submitFeedback,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Button color
+                  backgroundColor: Colors.teal,
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: const Text(
