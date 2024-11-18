@@ -70,7 +70,7 @@ class CouponView extends StatelessWidget {
                   const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
-                      _showAudioSourceDialog(context, controller);
+                      controller.showAudioSourceDialog(context);
                     },
                     child: const Text('Change Audio Source'),
                   ),
@@ -136,45 +136,6 @@ class CouponView extends StatelessWidget {
           ),
         );
       }),
-    );
-  }
-
-  void _showAudioSourceDialog(BuildContext context, CouponController controller) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        final TextEditingController textController = TextEditingController();
-        return AlertDialog(
-          title: const Text('Change Audio Source'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: textController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter Audio URL',
-                ),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  controller.setAudioSource(textController.text);
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Set URL'),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-                  controller.setAudioSource('audio/simple-notification-152054.mp3'); // Set default
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Set Default'),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
