@@ -1,42 +1,42 @@
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class PickupOrderController extends GetxController {
-  static const String apiKey = 'c87930a8a28c4c5eb8fe14188919e14b';
+  // Properti dinamis untuk menyimpan data
+  var distance = 7.0.obs; // Contoh jarak pickup (default 7 km)
+  var weight = 9.6.obs; // Contoh berat barang (default 9.6 kg)
+  var payableAmount = 89000.obs; // Harga yang harus dibayar (Rp89.000)
 
-  final String tileUrl =
-      'https://maps.geoapify.com/v1/tile/carto/{z}/{x}/{y}.png?&apiKey=$apiKey';
-  final String placesUrl =
-      'https://api.geoapify.com/v1/geocode/search?apiKey=$apiKey&text=';
+  // Fungsi untuk memperbarui jarak
+  void updateDistance(double newDistance) {
+    distance.value = newDistance;
+  }
 
-  Future<Map<String, dynamic>> searchLocation(String query) async {
-    final url = '$placesUrl$query';
-    print('Request URL: $url'); // Debugging: Tampilkan URL
+  // Fungsi untuk memperbarui berat barang
+  void updateWeight(double newWeight) {
+    weight.value = newWeight;
+  }
 
-    try {
-      final response = await http.get(Uri.parse(url));
+  // Fungsi untuk memperbarui jumlah yang harus dibayar
+  void updatePayableAmount(int newAmount) {
+    payableAmount.value = newAmount;
+  }
 
-      print('Response Status Code: ${response.statusCode}'); // Debugging
-      print('Response Body: ${response.body}'); // Debugging
+  // Fungsi untuk navigasi ke Nota Pemesanan View
+  void goToNotaPemesanan() {
+    Get.toNamed('/nota-pemesanan'); // Pastikan rute ini didefinisikan di GetX route
+  }
 
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (data['features'].isNotEmpty) {
-          final location = data['features'][0]['geometry']['coordinates'];
-          return {
-            'lat': location[1],
-            'lon': location[0],
-          };
-        } else {
-          return {};
-        }
-      } else {
-        throw Exception('Failed to load location');
-      }
-    } catch (e) {
-      print('Error occurred: $e'); // Debugging: Tampilkan error
-      throw Exception('Error: $e');
-    }
+  @override
+  void onInit() {
+    super.onInit();
+    // Inisialisasi logika tambahan di sini (misalnya, fetch data awal)
+    print("PickupOrderController initialized");
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    // Cleanup jika dibutuhkan
+    print("PickupOrderController disposed");
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lawndre_project/app/modules/location/views/location_view.dart';
 import 'package:lawndre_project/app/modules/nota_pemesanan/views/nota_pemesanan_view.dart';
 import '../controllers/pickup_order_controller.dart';
-import '../widgets/map_widget.dart';
 
 class PickupOrderView extends StatelessWidget {
   const PickupOrderView({super.key});
@@ -30,7 +30,7 @@ class PickupOrderView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '(~ 7km)',  // Anda dapat mengganti ini dengan variabel jarak dinamis
+                  '(~ 7km)', // Anda dapat mengganti ini dengan variabel jarak dinamis
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(width: 8),
@@ -50,8 +50,8 @@ class PickupOrderView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Sengkaling', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                    Text('Perumahan Sengkaling, Jln. Sengkaling Indah', style: TextStyle(color: Colors.grey)),
+                    Text('Lokasi Lawndre', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text('Jln. Sigura-gura', style: TextStyle(color: Colors.grey)),
                   ],
                 ),
               ],
@@ -66,7 +66,7 @@ class PickupOrderView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Tegalgondo', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    Text('Lokasi Jemput', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                     Text('Jln. Tegalgondo, RT.9/RW.1', style: TextStyle(color: Colors.grey)),
                   ],
                 ),
@@ -85,7 +85,7 @@ class PickupOrderView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '9.6 kg',  // Anda dapat mengganti ini dengan variabel berat dinamis
+                    '9.6 kg', // Anda dapat mengganti ini dengan variabel berat dinamis
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -95,24 +95,23 @@ class PickupOrderView extends StatelessWidget {
 
             // Harga yang harus dibayarkan oleh pelanggan
             const Text(
-              'Payable by Customer Rp89.000',  // Ganti dengan harga dinamis
+              'Payable by Customer Rp89.000',
               style: TextStyle(fontSize: 16),
             ),
             const Spacer(),
 
-            // Tombol untuk memilih lokasi di peta
             ElevatedButton(
-              onPressed: () {
-                Get.to(() => MapWidget()); // Navigate to map page
-              },
+              onPressed: () => Get.to(LocationView()),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 115),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 150),
                 backgroundColor: const Color.fromRGBO(55, 94, 97, 1),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-              child: Text('Select Location on Map', style: TextStyle(color: Colors.white),),
+              child: Text('Pilih alamat', style: TextStyle(color: Colors.white)),
             ),
             const SizedBox(height: 20),
-
             // Tombol Pickup Now
             ElevatedButton(
               onPressed: () => Get.to(NotaPemesananView()),

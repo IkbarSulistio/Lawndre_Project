@@ -32,6 +32,8 @@ import '../modules/landing/bindings/landing_binding.dart';
 import '../modules/landing/views/landing_view.dart';
 import '../modules/lipat_item/bindings/lipat_item_binding.dart';
 import '../modules/lipat_item/views/lipat_item_view.dart';
+import '../modules/location/bindings/location_binding.dart';
+import '../modules/location/views/location_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/nota_pemesanan/bindings/nota_pemesanan_binding.dart';
@@ -190,6 +192,11 @@ class AppPages {
       name: _Paths.WEBVIEW,
       page: () => const WebviewView(),
       binding: WebviewBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOCATION,
+      page: () => LocationView(),
+      binding: LocationBinding(),
     ),
   ];
 }

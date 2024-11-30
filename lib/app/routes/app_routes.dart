@@ -29,6 +29,7 @@ abstract class Routes {
   static const SELIMUT_CARPET_ITEM = _Paths.SELIMUT_CARPET_ITEM;
   static const QN_A = _Paths.QN_A;
   static const WEBVIEW = _Paths.WEBVIEW;
+  static const LOCATION = _Paths.LOCATION;
 }
 
 abstract class _Paths {
@@ -59,4 +60,5 @@ abstract class _Paths {
   static const SELIMUT_CARPET_ITEM = '/selimut-carpet-item';
   static const QN_A = '/qn-a';
   static const WEBVIEW = '/webview';
+  static const LOCATION = '/location';
 }
