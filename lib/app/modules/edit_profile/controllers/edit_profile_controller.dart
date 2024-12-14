@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:video_player/video_player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -158,13 +159,69 @@ class EditProfileController extends GetxController {
 
   Future<void> saveUserProfile() async {
     final user = _auth.currentUser;
+
     if (user != null) {
-      await _firestore.collection('users').doc(user.uid).set({
+      // Save to local storage
+      final userData = {
         'userName': profile.value.userName,
         'email': profile.value.email,
         'phoneNumber': profile.value.phoneNumber,
         'profileImage': profile.value.profileImage,
-      });
+      };
+      _storage.write('userProfile', userData);
+
+      // Check connectivity
+      final result = await Connectivity().checkConnectivity();
+      
+      if (result != ConnectivityResult.none) {
+        print("y");
+        // If online, upload to Firestore
+        await uploadProfileToFirebase(user.uid, userData);
+        Get.back();
+        Get.snackbar(
+          "Success",
+          "Success edit profile",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } else {
+        print("n");
+        // If offline, schedule upload when connected
+        _storage.write('uploadPending', true);
+        Get.back();
+        Get.snackbar(
+          "Offline",
+          "Data saved locally. Will upload when online.",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+
+        // Listen for connectivity changes
+        Connectivity().onConnectivityChanged.listen((connectivityResult) async {
+          if (connectivityResult != ConnectivityResult.none) {
+            // Retry upload if connectivity is restored
+            final pending = _storage.read('uploadPending') ?? false;
+            if (pending) {
+              await uploadProfileToFirebase(user.uid, userData);
+              _storage.write('uploadPending', false); // Clear pending flag
+            }
+          }
+        });
+      }
+    } else {
+      Get.snackbar("Error", "User not found",
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> uploadProfileToFirebase(
+      String userId, Map<String, dynamic> userData) async {
+    try {
+      await _firestore.collection('users').doc(userId).set(userData);
+      Get.snackbar("Success", "Profile uploaded to Firebase",
+          snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      Get.snackbar("Error", "Failed to upload profile to Firebase",
+          snackPosition: SnackPosition.BOTTOM);
+      print("Error uploading profile: $e");
     }
   }
 

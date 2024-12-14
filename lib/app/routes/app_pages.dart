@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/QnA/bindings/qn_a_binding.dart';
 import '../modules/QnA/views/qn_a_view.dart';
+import '../modules/connection/bindings/connection_binding.dart';
+import '../modules/connection/views/no_connection_view.dart';
 import '../modules/coupon/bindings/coupon_binding.dart';
 import '../modules/coupon/views/coupon_view.dart';
 import '../modules/create_account/bindings/create_account_binding.dart';

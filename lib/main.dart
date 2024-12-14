@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lawndre_project/depedency_injection.dart';
 import 'package:lawndre_project/services/notification_handler.dart';
 
 import 'app/routes/app_pages.dart';
@@ -19,4 +20,5 @@ void main() async{
       getPages: AppPages.routes,
     ),
   );
+  DependencyInjection.init();
 }

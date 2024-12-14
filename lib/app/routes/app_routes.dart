@@ -30,6 +30,7 @@ abstract class Routes {
   static const QN_A = _Paths.QN_A;
   static const WEBVIEW = _Paths.WEBVIEW;
   static const LOCATION = _Paths.LOCATION;
+  static const CONNECTION = _Paths.CONNECTION;
 }
 
 abstract class _Paths {
@@ -61,4 +62,5 @@ abstract class _Paths {
   static const QN_A = '/qn-a';
   static const WEBVIEW = '/webview';
   static const LOCATION = '/location';
+  static const CONNECTION = '/connection';
 }
