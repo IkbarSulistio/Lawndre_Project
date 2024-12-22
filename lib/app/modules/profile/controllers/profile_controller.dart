@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lawndre_project/app/modules/customer_support/views/customer_support_view.dart';
+import 'package:lawndre_project/app/modules/pickup_order/widgets/map_widget.dart';
 
 class ProfileController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -60,7 +61,7 @@ class ProfileController extends GetxController {
         Get.to(CustomerSupportView());
         break;
       case 'Alamat':
-        Get.toNamed('/address');
+        Get.to(MapWidget());
         break;
       case 'Logout':
         logout();

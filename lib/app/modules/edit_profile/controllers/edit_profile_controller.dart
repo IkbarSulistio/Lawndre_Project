@@ -174,17 +174,15 @@ class EditProfileController extends GetxController {
       final result = await Connectivity().checkConnectivity();
       
       if (result != ConnectivityResult.none) {
-        print("y");
         // If online, upload to Firestore
         await uploadProfileToFirebase(user.uid, userData);
         Get.back();
         Get.snackbar(
           "Success",
-          "Success edit profile",
+          "Profile successfully updated",
           snackPosition: SnackPosition.BOTTOM,
         );
       } else {
-        print("n");
         // If offline, schedule upload when connected
         _storage.write('uploadPending', true);
         Get.back();
@@ -197,11 +195,10 @@ class EditProfileController extends GetxController {
         // Listen for connectivity changes
         Connectivity().onConnectivityChanged.listen((connectivityResult) async {
           if (connectivityResult != ConnectivityResult.none) {
-            // Retry upload if connectivity is restored
             final pending = _storage.read('uploadPending') ?? false;
             if (pending) {
               await uploadProfileToFirebase(user.uid, userData);
-              _storage.write('uploadPending', false); // Clear pending flag
+              _storage.write('uploadPending', false);
             }
           }
         });
@@ -216,7 +213,17 @@ class EditProfileController extends GetxController {
       String userId, Map<String, dynamic> userData) async {
     try {
       await _firestore.collection('users').doc(userId).set(userData);
-      Get.snackbar("Success", "Profile uploaded to Firebase",
+
+      // Delete the local profile image file if it exists
+      if (profile.value.profileImage != null && profile.value.profileImage!.isNotEmpty) {
+        final profileImageFile = File(profile.value.profileImage!);
+        if (await profileImageFile.exists()) {
+          await profileImageFile.delete();
+        }
+        _storage.remove('userData');
+      }
+
+      Get.snackbar("Success", "Profile uploaded to Firebase and local files deleted",
           snackPosition: SnackPosition.BOTTOM);
     } catch (e) {
       Get.snackbar("Error", "Failed to upload profile to Firebase",
@@ -233,7 +240,6 @@ class EditProfileController extends GetxController {
         await userDocRef.delete();
 
         _storage.remove('profileImage');
-        _storage.remove('profileVideo');
       } else {
         Get.snackbar("Error", "No user found to delete data",
             snackPosition: SnackPosition.BOTTOM);

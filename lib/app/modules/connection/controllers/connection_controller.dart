@@ -1,9 +1,7 @@
-// connection_controller.dart
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../views/no_connection_view.dart'; // Importing the NoConnectionContent widget
-import 'package:lawndre_project/app/modules/home_page/views/home_page_view.dart';
+import '../views/no_connection_view.dart';
 
 class ConnectionController extends GetxController {
   final Connectivity _connectivity = Connectivity();
@@ -45,8 +43,6 @@ class ConnectionController extends GetxController {
       // Kembali ke halaman terakhir jika ada
       if (_lastRoute != null && Get.currentRoute != _lastRoute) {
         Get.offAllNamed(_lastRoute!);
-      } else {
-        Get.offAll(() => HomePageView());
       }
     }
   }
